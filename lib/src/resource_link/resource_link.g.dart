@@ -16,63 +16,72 @@ class _$ResourceLinkSerializer implements StructuredSerializer<ResourceLink> {
   final String wireName = 'ResourceLink';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ResourceLink object,
+  Iterable<Object?> serialize(Serializers serializers, ResourceLink object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.description != null) {
+    value = object.description;
+    if (value != null) {
       result
         ..add('description')
-        ..add(serializers.serialize(object.description,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.type != null) {
+    value = object.type;
+    if (value != null) {
       result
         ..add('type')
-        ..add(serializers.serialize(object.type,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.owner != null) {
+    value = object.owner;
+    if (value != null) {
       result
         ..add('owner')
-        ..add(serializers.serialize(object.owner,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.classId != null) {
+    value = object.classId;
+    if (value != null) {
       result
         ..add('classid')
-        ..add(serializers.serialize(object.classId,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.links != null) {
+    value = object.links;
+    if (value != null) {
       result
         ..add('links')
-        ..add(serializers.serialize(object.links,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
-    if (object.recycle != null) {
+    value = object.recycle;
+    if (value != null) {
       result
         ..add('recycle')
-        ..add(serializers.serialize(object.recycle,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
 
   @override
-  ResourceLink deserialize(Serializers serializers, Iterable<Object> serialized,
+  ResourceLink deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ResourceLinkBuilder();
 
@@ -80,41 +89,41 @@ class _$ResourceLinkSerializer implements StructuredSerializer<ResourceLink> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'owner':
           result.owner = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'classid':
           result.classId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'links':
           result.links.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'recycle':
           result.recycle = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -125,23 +134,23 @@ class _$ResourceLinkSerializer implements StructuredSerializer<ResourceLink> {
 
 class _$ResourceLink extends ResourceLink {
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String description;
+  final String? description;
   @override
-  final String type;
+  final String? type;
   @override
-  final String owner;
+  final String? owner;
   @override
-  final int classId;
+  final int? classId;
   @override
-  final BuiltList<String> links;
+  final BuiltList<String>? links;
   @override
-  final bool recycle;
+  final bool? recycle;
 
-  factory _$ResourceLink([void Function(ResourceLinkBuilder) updates]) =>
+  factory _$ResourceLink([void Function(ResourceLinkBuilder)? updates]) =>
       (new ResourceLinkBuilder()..update(updates)).build();
 
   _$ResourceLink._(
@@ -209,52 +218,53 @@ class _$ResourceLink extends ResourceLink {
 
 class ResourceLinkBuilder
     implements Builder<ResourceLink, ResourceLinkBuilder> {
-  _$ResourceLink _$v;
+  _$ResourceLink? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _owner;
-  String get owner => _$this._owner;
-  set owner(String owner) => _$this._owner = owner;
+  String? _owner;
+  String? get owner => _$this._owner;
+  set owner(String? owner) => _$this._owner = owner;
 
-  int _classId;
-  int get classId => _$this._classId;
-  set classId(int classId) => _$this._classId = classId;
+  int? _classId;
+  int? get classId => _$this._classId;
+  set classId(int? classId) => _$this._classId = classId;
 
-  ListBuilder<String> _links;
+  ListBuilder<String>? _links;
   ListBuilder<String> get links => _$this._links ??= new ListBuilder<String>();
-  set links(ListBuilder<String> links) => _$this._links = links;
+  set links(ListBuilder<String>? links) => _$this._links = links;
 
-  bool _recycle;
-  bool get recycle => _$this._recycle;
-  set recycle(bool recycle) => _$this._recycle = recycle;
+  bool? _recycle;
+  bool? get recycle => _$this._recycle;
+  set recycle(bool? recycle) => _$this._recycle = recycle;
 
   ResourceLinkBuilder();
 
   ResourceLinkBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
-      _description = _$v.description;
-      _type = _$v.type;
-      _owner = _$v.owner;
-      _classId = _$v.classId;
-      _links = _$v.links?.toBuilder();
-      _recycle = _$v.recycle;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
+      _description = $v.description;
+      _type = $v.type;
+      _owner = $v.owner;
+      _classId = $v.classId;
+      _links = $v.links?.toBuilder();
+      _recycle = $v.recycle;
       _$v = null;
     }
     return this;
@@ -262,14 +272,12 @@ class ResourceLinkBuilder
 
   @override
   void replace(ResourceLink other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ResourceLink;
   }
 
   @override
-  void update(void Function(ResourceLinkBuilder) updates) {
+  void update(void Function(ResourceLinkBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -288,7 +296,7 @@ class ResourceLinkBuilder
               links: _links?.build(),
               recycle: recycle);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'links';
         _links?.build();
@@ -303,4 +311,4 @@ class ResourceLinkBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

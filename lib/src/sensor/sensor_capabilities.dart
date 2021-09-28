@@ -8,10 +8,10 @@ part 'sensor_capabilities.g.dart';
 abstract class SensorCapabilities
   implements Built<SensorCapabilities, SensorCapabilitiesBuilder> {
   ///True if this sensor is certified.
-  bool get certified;
+  bool? get certified;
 
   ///True if this sensor is primary.
-  bool get primary;
+  bool? get primary;
 
   static Serializer<SensorCapabilities> get serializer => _$sensorCapabilitiesSerializer;
 
@@ -20,6 +20,6 @@ abstract class SensorCapabilities
   factory SensorCapabilities([updates(SensorCapabilitiesBuilder b)]) = _$SensorCapabilities;
 
   factory SensorCapabilities.fromJson(Map json) {
-    return serializers.deserializeWith(SensorCapabilities.serializer, json);
+    return serializers.deserializeWith(SensorCapabilities.serializer, json)!;
   }
 }

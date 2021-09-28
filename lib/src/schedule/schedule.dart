@@ -28,17 +28,14 @@ abstract class Schedule
   static const String timeDivider = "T";
   static const String randomTimeDivider = "A";
 
-  @nullable
-  String get id;
+  String? get id;
 
   ///Name for the new schedule. If a name is not specified then the default name, “schedule”, is used.
   ///If the name is already taken a space and number will be appended by the bridge, e.g. “schedule 1”.
-  @nullable
-  String get name;
+  String? get name;
 
   ///Description of the new schedule. If the description is not specified it will be empty.
-  @nullable
-  String get description;
+  String? get description;
 
   ///Local time when the scheduled event will occur.
   ///
@@ -52,30 +49,25 @@ abstract class Schedule
   ///For a full description of the allowed time pattern formats please check the allowed time patterns.
   ///Incorrectly formatted dates will raise an error of type 7. If the time is in the past an error 7 will also be raised.
   @BuiltValueField(wireName: 'localtime')
-  @nullable
-  String get time;
+  String? get time;
 
   ///"enabled"  Schedule is enabled
   ///"disabled"  Schedule is disabled by user.
   ///Application is only allowed to set “enabled” or “disabled”. Disabled causes a timer to reset when activated (i.e. stop & reset). “enabled” when not provided on creation.
-  @nullable
-  String get status;
+  String? get status;
 
   ///If set to true, the schedule will be removed automatically if expired, if set to false it will be disabled. Default is true. Only visible for non-recurring schedules.
   @BuiltValueField(wireName: 'autodelete')
-  @nullable
-  bool get autoDelete;
+  bool? get autoDelete;
 
   ///When true: Resource is automatically deleted when not referenced anymore in any resource link. Only on creation of resource. “false” when omitted.
-  @nullable
-  bool get recycle;
+  bool? get recycle;
 
-  @nullable
-  Command get command;
+  Command? get command;
 
-  bool get isAlarm => _isAlarm(time);
+  bool get isAlarm => _isAlarm(time!);
 
-  bool get isTimer => _isTimer(time);
+  bool get isTimer => _isTimer(time!);
 
   @memoized
   ScheduleType get type {
@@ -92,9 +84,9 @@ abstract class Schedule
 
   factory Schedule([updates(ScheduleBuilder b)]) = _$Schedule;
 
-  factory Schedule.fromJson(Map json, {String id}) {
+  factory Schedule.fromJson(Map? json, {String? id}) {
     return serializers
-        .deserializeWith(Schedule.serializer, json)
+        .deserializeWith(Schedule.serializer, json)!
         .rebuild((b) => b..id = id);
   }
 
@@ -115,13 +107,13 @@ abstract class Schedule
   }
 
   @override
-  Map toBridgeObject({String action}) {
+  Map? toBridgeObject({String? action}) {
     if ('create' == action) {
       return {
         'name': name,
         'description': description ?? '',
         'localtime': time,
-        'command': command.toBridgeObject(),
+        'command': command!.toBridgeObject(),
         'status': status ?? 'enabled',
         'autodelete': autoDelete ?? true,
         'recycle': recycle ?? false

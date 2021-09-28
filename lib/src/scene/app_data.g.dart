@@ -15,26 +15,28 @@ class _$AppDataSerializer implements StructuredSerializer<AppData> {
   final String wireName = 'AppData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AppData object,
+  Iterable<Object?> serialize(Serializers serializers, AppData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.version != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.version;
+    if (value != null) {
       result
         ..add('version')
-        ..add(serializers.serialize(object.version,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.data != null) {
+    value = object.data;
+    if (value != null) {
       result
         ..add('data')
-        ..add(serializers.serialize(object.data,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  AppData deserialize(Serializers serializers, Iterable<Object> serialized,
+  AppData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AppDataBuilder();
 
@@ -42,15 +44,15 @@ class _$AppDataSerializer implements StructuredSerializer<AppData> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'version':
           result.version = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'data':
           result.data = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -61,11 +63,11 @@ class _$AppDataSerializer implements StructuredSerializer<AppData> {
 
 class _$AppData extends AppData {
   @override
-  final int version;
+  final int? version;
   @override
-  final String data;
+  final String? data;
 
-  factory _$AppData([void Function(AppDataBuilder) updates]) =>
+  factory _$AppData([void Function(AppDataBuilder)? updates]) =>
       (new AppDataBuilder()..update(updates)).build();
 
   _$AppData._({this.version, this.data}) : super._();
@@ -98,22 +100,23 @@ class _$AppData extends AppData {
 }
 
 class AppDataBuilder implements Builder<AppData, AppDataBuilder> {
-  _$AppData _$v;
+  _$AppData? _$v;
 
-  int _version;
-  int get version => _$this._version;
-  set version(int version) => _$this._version = version;
+  int? _version;
+  int? get version => _$this._version;
+  set version(int? version) => _$this._version = version;
 
-  String _data;
-  String get data => _$this._data;
-  set data(String data) => _$this._data = data;
+  String? _data;
+  String? get data => _$this._data;
+  set data(String? data) => _$this._data = data;
 
   AppDataBuilder();
 
   AppDataBuilder get _$this {
-    if (_$v != null) {
-      _version = _$v.version;
-      _data = _$v.data;
+    final $v = _$v;
+    if ($v != null) {
+      _version = $v.version;
+      _data = $v.data;
       _$v = null;
     }
     return this;
@@ -121,14 +124,12 @@ class AppDataBuilder implements Builder<AppData, AppDataBuilder> {
 
   @override
   void replace(AppData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AppData;
   }
 
   @override
-  void update(void Function(AppDataBuilder) updates) {
+  void update(void Function(AppDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -140,4 +141,4 @@ class AppDataBuilder implements Builder<AppData, AppDataBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

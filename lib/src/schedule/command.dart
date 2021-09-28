@@ -10,13 +10,13 @@ abstract class Command
     with BridgeObject
     implements Built<Command, CommandBuilder> {
   ///Path to a light resource, a group resource or any other bridge resource (including "/api/<username>/")
-  String get address;
+  String? get address;
 
   ///The HTTP method used to send the body to the given address. Either "POST", "PUT", "DELETE" for local addresses.
-  String get method;
+  String? get method;
 
   ///JSON string to be sent to the relevant resource.
-  BuiltMap<String, String> get body;
+  BuiltMap<String, String>? get body;
 
   static Serializer<Command> get serializer => _$commandSerializer;
 
@@ -25,11 +25,11 @@ abstract class Command
   factory Command([updates(CommandBuilder b)]) = _$Command;
 
   factory Command.fromJson(Map json) {
-    return serializers.deserializeWith(Command.serializer, json);
+    return serializers.deserializeWith(Command.serializer, json)!;
   }
 
   @override
-  Map toBridgeObject({String action}) {
-    return serializers.serializeWith(serializer, this);
+  Map? toBridgeObject({String? action}) {
+    return serializers.serializeWith(serializer, this) as Map<dynamic, dynamic>?;
   }
 }

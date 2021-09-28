@@ -5,22 +5,17 @@ import 'package:hue_api/src/core/serializers.dart';
 part 'sensor_state.g.dart';
 
 abstract class SensorState implements Built<SensorState, SensorStateBuilder> {
-  @nullable
-  bool get presence;
+  bool? get presence;
 
-  @nullable
   @BuiltValueField(wireName: 'lastupdated')
-  String get lastUpdated;
+  String? get lastUpdated;
 
-  @nullable
-  int get temperature;
+  int? get temperature;
 
-  @nullable
   @BuiltValueField(wireName: 'buttonevent')
-  int get buttonEvent;
+  int? get buttonEvent;
 
-  @nullable
-  bool get daylight;
+  bool? get daylight;
 
   static Serializer<SensorState> get serializer => _$sensorStateSerializer;
 
@@ -29,6 +24,6 @@ abstract class SensorState implements Built<SensorState, SensorStateBuilder> {
   factory SensorState([updates(SensorStateBuilder b)]) = _$SensorState;
 
   factory SensorState.fromJson(Map json) {
-    return serializers.deserializeWith(SensorState.serializer, json);
+    return serializers.deserializeWith(SensorState.serializer, json)!;
   }
 }

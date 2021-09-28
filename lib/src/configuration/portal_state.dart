@@ -5,12 +5,12 @@ import 'package:hue_api/src/core/serializers.dart';
 part 'portal_state.g.dart';
 
 abstract class PortalState implements Built<PortalState, PortalStateBuilder> {
-  String get communication;
-  bool get incoming;
-  bool get outgoing;
+  String? get communication;
+  bool? get incoming;
+  bool? get outgoing;
 
   @BuiltValueField(wireName: 'signedon')
-  bool get signedOn;
+  bool? get signedOn;
 
   static Serializer<PortalState> get serializer => _$portalStateSerializer;
 
@@ -19,6 +19,6 @@ abstract class PortalState implements Built<PortalState, PortalStateBuilder> {
   factory PortalState([updates(PortalStateBuilder b)]) = _$PortalState;
 
   factory PortalState.fromJson(Map json) {
-    return serializers.deserializeWith(PortalState.serializer, json);
+    return serializers.deserializeWith(PortalState.serializer, json)!;
   }
 }

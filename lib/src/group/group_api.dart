@@ -7,23 +7,23 @@ import 'package:hue_api/src/light/light.dart';
 
 class GroupApi {
   final BridgeClient _client;
-  String _username;
+  String? _username;
 
   GroupApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   /// Gets a list of all groups that have been added to the bridge
   Future<List<Group>> all() async {
     String url = '/api/$_username/groups';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return await _responseToGroups(response);
   }
 
   Future<List<Group>> _responseToGroups(Map<String, dynamic> response) async {
     final groups = <Group>[];
     for (String key in response.keys) {
-      Map<String, dynamic> item = response[key];
+      Map<String, dynamic>? item = response[key];
       final group = Group.fromJson(item, id: int.parse(key));
       final lights = await _lights(group);
       groups.add(group.rebuild((b) => b..groupLights.replace(lights)));
@@ -33,7 +33,7 @@ class GroupApi {
 
   Future<List<Light>> _lights(Group group) async {
     var result = <Light>[];
-    for (String _light in group.lightIds) {
+    for (String _light in group.lightIds!) {
       result.add(await _completeLight(int.parse(_light)));
     }
     return result;
@@ -69,7 +69,7 @@ class GroupApi {
 
   Future<BridgeResponse> state(Group group) async {
     String url = '/api/$_username/groups/${group.id}/action';
-    return await _client.put(url, group.action.toBridgeObject());
+    return await _client.put(url, group.action!.toBridgeObject());
   }
 
   Future<BridgeResponse> delete(Group group) async {

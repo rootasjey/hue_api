@@ -17,43 +17,50 @@ class _$DiscoveryResultSerializer
   final String wireName = 'DiscoveryResult';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DiscoveryResult object,
+  Iterable<Object?> serialize(Serializers serializers, DiscoveryResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.mac != null) {
+    value = object.mac;
+    if (value != null) {
       result
         ..add('mac')
-        ..add(serializers.serialize(object.mac,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.apiVersion != null) {
+    value = object.apiVersion;
+    if (value != null) {
       result
         ..add('apiversion')
-        ..add(serializers.serialize(object.apiVersion,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.ipAddress != null) {
+    value = object.ipAddress;
+    if (value != null) {
       result
         ..add('internalipaddress')
-        ..add(serializers.serialize(object.ipAddress,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.swVersion != null) {
+    value = object.swVersion;
+    if (value != null) {
       result
         ..add('swversion')
-        ..add(serializers.serialize(object.swVersion,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -61,7 +68,7 @@ class _$DiscoveryResultSerializer
 
   @override
   DiscoveryResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DiscoveryResultBuilder();
 
@@ -69,31 +76,31 @@ class _$DiscoveryResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'mac':
           result.mac = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'apiversion':
           result.apiVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'internalipaddress':
           result.ipAddress = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'swversion':
           result.swVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -104,19 +111,19 @@ class _$DiscoveryResultSerializer
 
 class _$DiscoveryResult extends DiscoveryResult {
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String mac;
+  final String? mac;
   @override
-  final String apiVersion;
+  final String? apiVersion;
   @override
-  final String ipAddress;
+  final String? ipAddress;
   @override
-  final String swVersion;
+  final String? swVersion;
 
-  factory _$DiscoveryResult([void Function(DiscoveryResultBuilder) updates]) =>
+  factory _$DiscoveryResult([void Function(DiscoveryResultBuilder)? updates]) =>
       (new DiscoveryResultBuilder()..update(updates)).build();
 
   _$DiscoveryResult._(
@@ -173,42 +180,43 @@ class _$DiscoveryResult extends DiscoveryResult {
 
 class DiscoveryResultBuilder
     implements Builder<DiscoveryResult, DiscoveryResultBuilder> {
-  _$DiscoveryResult _$v;
+  _$DiscoveryResult? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _mac;
-  String get mac => _$this._mac;
-  set mac(String mac) => _$this._mac = mac;
+  String? _mac;
+  String? get mac => _$this._mac;
+  set mac(String? mac) => _$this._mac = mac;
 
-  String _apiVersion;
-  String get apiVersion => _$this._apiVersion;
-  set apiVersion(String apiVersion) => _$this._apiVersion = apiVersion;
+  String? _apiVersion;
+  String? get apiVersion => _$this._apiVersion;
+  set apiVersion(String? apiVersion) => _$this._apiVersion = apiVersion;
 
-  String _ipAddress;
-  String get ipAddress => _$this._ipAddress;
-  set ipAddress(String ipAddress) => _$this._ipAddress = ipAddress;
+  String? _ipAddress;
+  String? get ipAddress => _$this._ipAddress;
+  set ipAddress(String? ipAddress) => _$this._ipAddress = ipAddress;
 
-  String _swVersion;
-  String get swVersion => _$this._swVersion;
-  set swVersion(String swVersion) => _$this._swVersion = swVersion;
+  String? _swVersion;
+  String? get swVersion => _$this._swVersion;
+  set swVersion(String? swVersion) => _$this._swVersion = swVersion;
 
   DiscoveryResultBuilder();
 
   DiscoveryResultBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
-      _mac = _$v.mac;
-      _apiVersion = _$v.apiVersion;
-      _ipAddress = _$v.ipAddress;
-      _swVersion = _$v.swVersion;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
+      _mac = $v.mac;
+      _apiVersion = $v.apiVersion;
+      _ipAddress = $v.ipAddress;
+      _swVersion = $v.swVersion;
       _$v = null;
     }
     return this;
@@ -216,14 +224,12 @@ class DiscoveryResultBuilder
 
   @override
   void replace(DiscoveryResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DiscoveryResult;
   }
 
   @override
-  void update(void Function(DiscoveryResultBuilder) updates) {
+  void update(void Function(DiscoveryResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -242,4 +248,4 @@ class DiscoveryResultBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

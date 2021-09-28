@@ -6,26 +6,20 @@ part 'discovery_result.g.dart';
 
 abstract class DiscoveryResult
     implements Built<DiscoveryResult, DiscoveryResultBuilder> {
-  @nullable
-  String get id;
+  String? get id;
 
-  @nullable
-  String get name;
+  String? get name;
 
-  @nullable
-  String get mac;
+  String? get mac;
 
-  @nullable
   @BuiltValueField(wireName: 'apiversion')
-  String get apiVersion;
+  String? get apiVersion;
 
-  @nullable
   @BuiltValueField(wireName: 'internalipaddress')
-  String get ipAddress;
+  String? get ipAddress;
 
-  @nullable
   @BuiltValueField(wireName: 'swversion')
-  String get swVersion;
+  String? get swVersion;
 
   static Serializer<DiscoveryResult> get serializer =>
       _$discoveryResultSerializer;
@@ -35,7 +29,7 @@ abstract class DiscoveryResult
   factory DiscoveryResult([updates(DiscoveryResultBuilder b)]) =
       _$DiscoveryResult;
 
-  factory DiscoveryResult.fromJson(Map json) {
-    return serializers.deserializeWith(DiscoveryResult.serializer, json);
+  factory DiscoveryResult.fromJson(Map? json) {
+    return serializers.deserializeWith(DiscoveryResult.serializer, json)!;
   }
 }

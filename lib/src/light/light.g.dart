@@ -15,68 +15,77 @@ class _$LightSerializer implements StructuredSerializer<Light> {
   final String wireName = 'Light';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Light object,
+  Iterable<Object?> serialize(Serializers serializers, Light object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.type != null) {
+    value = object.type;
+    if (value != null) {
       result
         ..add('type')
-        ..add(serializers.serialize(object.type,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.state != null) {
+    value = object.state;
+    if (value != null) {
       result
         ..add('state')
-        ..add(serializers.serialize(object.state,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(LightState)));
     }
-    if (object.modelId != null) {
+    value = object.modelId;
+    if (value != null) {
       result
         ..add('modelid')
-        ..add(serializers.serialize(object.modelId,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.uniqueId != null) {
+    value = object.uniqueId;
+    if (value != null) {
       result
         ..add('uniqueid')
-        ..add(serializers.serialize(object.uniqueId,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.manufacturerName != null) {
+    value = object.manufacturerName;
+    if (value != null) {
       result
         ..add('manufacturername')
-        ..add(serializers.serialize(object.manufacturerName,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.luminaireUniqueId != null) {
+    value = object.luminaireUniqueId;
+    if (value != null) {
       result
         ..add('luminaireuniqueid')
-        ..add(serializers.serialize(object.luminaireUniqueId,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.swVersion != null) {
+    value = object.swVersion;
+    if (value != null) {
       result
         ..add('swversion')
-        ..add(serializers.serialize(object.swVersion,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  Light deserialize(Serializers serializers, Iterable<Object> serialized,
+  Light deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LightBuilder();
 
@@ -84,43 +93,43 @@ class _$LightSerializer implements StructuredSerializer<Light> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'state':
           result.state.replace(serializers.deserialize(value,
-              specifiedType: const FullType(LightState)) as LightState);
+              specifiedType: const FullType(LightState))! as LightState);
           break;
         case 'modelid':
           result.modelId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'uniqueid':
           result.uniqueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'manufacturername':
           result.manufacturerName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'luminaireuniqueid':
           result.luminaireUniqueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'swversion':
           result.swVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -131,28 +140,30 @@ class _$LightSerializer implements StructuredSerializer<Light> {
 
 class _$Light extends Light {
   @override
-  final int id;
+  final int? id;
   @override
-  final String type;
+  final String? type;
   @override
-  final String name;
+  final String? name;
   @override
-  final LightState state;
+  final LightState? state;
   @override
-  final String modelId;
+  final String? modelId;
   @override
-  final String uniqueId;
+  final String? uniqueId;
   @override
-  final String manufacturerName;
+  final String? manufacturerName;
   @override
-  final String luminaireUniqueId;
+  final String? luminaireUniqueId;
   @override
-  final String swVersion;
-  String __productName;
-  HueColor __colors;
-  LightModel __model;
+  final String? swVersion;
+  String? __productName;
+  HueColor? __colors;
+  bool ___colors = false;
+  LightModel? __model;
+  bool ___model = false;
 
-  factory _$Light([void Function(LightBuilder) updates]) =>
+  factory _$Light([void Function(LightBuilder)? updates]) =>
       (new LightBuilder()..update(updates)).build();
 
   _$Light._(
@@ -171,10 +182,22 @@ class _$Light extends Light {
   String get productName => __productName ??= super.productName;
 
   @override
-  HueColor get colors => __colors ??= super.colors;
+  HueColor? get colors {
+    if (!___colors) {
+      __colors = super.colors;
+      ___colors = true;
+    }
+    return __colors;
+  }
 
   @override
-  LightModel get model => __model ??= super.model;
+  LightModel? get model {
+    if (!___model) {
+      __model = super.model;
+      ___model = true;
+    }
+    return __model;
+  }
 
   @override
   Light rebuild(void Function(LightBuilder) updates) =>
@@ -233,59 +256,60 @@ class _$Light extends Light {
 }
 
 class LightBuilder implements Builder<Light, LightBuilder> {
-  _$Light _$v;
+  _$Light? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  LightStateBuilder _state;
+  LightStateBuilder? _state;
   LightStateBuilder get state => _$this._state ??= new LightStateBuilder();
-  set state(LightStateBuilder state) => _$this._state = state;
+  set state(LightStateBuilder? state) => _$this._state = state;
 
-  String _modelId;
-  String get modelId => _$this._modelId;
-  set modelId(String modelId) => _$this._modelId = modelId;
+  String? _modelId;
+  String? get modelId => _$this._modelId;
+  set modelId(String? modelId) => _$this._modelId = modelId;
 
-  String _uniqueId;
-  String get uniqueId => _$this._uniqueId;
-  set uniqueId(String uniqueId) => _$this._uniqueId = uniqueId;
+  String? _uniqueId;
+  String? get uniqueId => _$this._uniqueId;
+  set uniqueId(String? uniqueId) => _$this._uniqueId = uniqueId;
 
-  String _manufacturerName;
-  String get manufacturerName => _$this._manufacturerName;
-  set manufacturerName(String manufacturerName) =>
+  String? _manufacturerName;
+  String? get manufacturerName => _$this._manufacturerName;
+  set manufacturerName(String? manufacturerName) =>
       _$this._manufacturerName = manufacturerName;
 
-  String _luminaireUniqueId;
-  String get luminaireUniqueId => _$this._luminaireUniqueId;
-  set luminaireUniqueId(String luminaireUniqueId) =>
+  String? _luminaireUniqueId;
+  String? get luminaireUniqueId => _$this._luminaireUniqueId;
+  set luminaireUniqueId(String? luminaireUniqueId) =>
       _$this._luminaireUniqueId = luminaireUniqueId;
 
-  String _swVersion;
-  String get swVersion => _$this._swVersion;
-  set swVersion(String swVersion) => _$this._swVersion = swVersion;
+  String? _swVersion;
+  String? get swVersion => _$this._swVersion;
+  set swVersion(String? swVersion) => _$this._swVersion = swVersion;
 
   LightBuilder();
 
   LightBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _type = _$v.type;
-      _name = _$v.name;
-      _state = _$v.state?.toBuilder();
-      _modelId = _$v.modelId;
-      _uniqueId = _$v.uniqueId;
-      _manufacturerName = _$v.manufacturerName;
-      _luminaireUniqueId = _$v.luminaireUniqueId;
-      _swVersion = _$v.swVersion;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _type = $v.type;
+      _name = $v.name;
+      _state = $v.state?.toBuilder();
+      _modelId = $v.modelId;
+      _uniqueId = $v.uniqueId;
+      _manufacturerName = $v.manufacturerName;
+      _luminaireUniqueId = $v.luminaireUniqueId;
+      _swVersion = $v.swVersion;
       _$v = null;
     }
     return this;
@@ -293,14 +317,12 @@ class LightBuilder implements Builder<Light, LightBuilder> {
 
   @override
   void replace(Light other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Light;
   }
 
   @override
-  void update(void Function(LightBuilder) updates) {
+  void update(void Function(LightBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -320,7 +342,7 @@ class LightBuilder implements Builder<Light, LightBuilder> {
               luminaireUniqueId: luminaireUniqueId,
               swVersion: swVersion);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'state';
         _state?.build();
@@ -335,4 +357,4 @@ class LightBuilder implements Builder<Light, LightBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

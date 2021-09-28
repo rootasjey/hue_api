@@ -6,14 +6,11 @@ part 'bridge_exception.g.dart';
 
 abstract class BridgeException
     implements Built<BridgeException, BridgeExceptionBuilder> {
-  @nullable
-  String get address;
+  String? get address;
 
-  @nullable
-  String get description;
+  String? get description;
 
-  @nullable
-  int get type;
+  int? get type;
 
   static Serializer<BridgeException> get serializer =>
       _$bridgeExceptionSerializer;
@@ -23,7 +20,7 @@ abstract class BridgeException
   factory BridgeException([updates(BridgeExceptionBuilder b)]) =
       _$BridgeException;
 
-  factory BridgeException.fromJson(Map json) {
-    return serializers.deserializeWith(BridgeException.serializer, json);
+  factory BridgeException.fromJson(Map? json) {
+    return serializers.deserializeWith(BridgeException.serializer, json)!;
   }
 }

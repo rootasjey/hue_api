@@ -5,10 +5,10 @@ import 'package:hue_api/src/core/serializers.dart';
 part 'backup.g.dart';
 
 abstract class BackUp implements Built<BackUp, BackUpBuilder> {
-  String get status;
+  String? get status;
 
   @BuiltValueField(wireName: 'errorcode')
-  int get errorCode;
+  int? get errorCode;
 
   static Serializer<BackUp> get serializer => _$backUpSerializer;
 
@@ -17,6 +17,6 @@ abstract class BackUp implements Built<BackUp, BackUpBuilder> {
   factory BackUp([updates(BackUpBuilder b)]) = _$BackUp;
 
   factory BackUp.fromJson(Map json) {
-    return serializers.deserializeWith(BackUp.serializer, json);
+    return serializers.deserializeWith(BackUp.serializer, json)!;
   }
 }

@@ -1,5 +1,5 @@
 abstract class ModelMixin {
-  String modelId;
+  String? modelId;
 
   String productName();
 

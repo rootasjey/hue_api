@@ -15,22 +15,28 @@ class _$BackUpSerializer implements StructuredSerializer<BackUp> {
   final String wireName = 'BackUp';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, BackUp object,
+  Iterable<Object?> serialize(Serializers serializers, BackUp object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'status',
-      serializers.serialize(object.status,
-          specifiedType: const FullType(String)),
-      'errorcode',
-      serializers.serialize(object.errorCode,
-          specifiedType: const FullType(int)),
-    ];
-
+    final result = <Object?>[];
+    Object? value;
+    value = object.status;
+    if (value != null) {
+      result
+        ..add('status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.errorCode;
+    if (value != null) {
+      result
+        ..add('errorcode')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     return result;
   }
 
   @override
-  BackUp deserialize(Serializers serializers, Iterable<Object> serialized,
+  BackUp deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new BackUpBuilder();
 
@@ -38,15 +44,15 @@ class _$BackUpSerializer implements StructuredSerializer<BackUp> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status':
           result.status = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'errorcode':
           result.errorCode = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -57,21 +63,14 @@ class _$BackUpSerializer implements StructuredSerializer<BackUp> {
 
 class _$BackUp extends BackUp {
   @override
-  final String status;
+  final String? status;
   @override
-  final int errorCode;
+  final int? errorCode;
 
-  factory _$BackUp([void Function(BackUpBuilder) updates]) =>
+  factory _$BackUp([void Function(BackUpBuilder)? updates]) =>
       (new BackUpBuilder()..update(updates)).build();
 
-  _$BackUp._({this.status, this.errorCode}) : super._() {
-    if (status == null) {
-      throw new BuiltValueNullFieldError('BackUp', 'status');
-    }
-    if (errorCode == null) {
-      throw new BuiltValueNullFieldError('BackUp', 'errorCode');
-    }
-  }
+  _$BackUp._({this.status, this.errorCode}) : super._();
 
   @override
   BackUp rebuild(void Function(BackUpBuilder) updates) =>
@@ -103,22 +102,23 @@ class _$BackUp extends BackUp {
 }
 
 class BackUpBuilder implements Builder<BackUp, BackUpBuilder> {
-  _$BackUp _$v;
+  _$BackUp? _$v;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  int _errorCode;
-  int get errorCode => _$this._errorCode;
-  set errorCode(int errorCode) => _$this._errorCode = errorCode;
+  int? _errorCode;
+  int? get errorCode => _$this._errorCode;
+  set errorCode(int? errorCode) => _$this._errorCode = errorCode;
 
   BackUpBuilder();
 
   BackUpBuilder get _$this {
-    if (_$v != null) {
-      _status = _$v.status;
-      _errorCode = _$v.errorCode;
+    final $v = _$v;
+    if ($v != null) {
+      _status = $v.status;
+      _errorCode = $v.errorCode;
       _$v = null;
     }
     return this;
@@ -126,14 +126,12 @@ class BackUpBuilder implements Builder<BackUp, BackUpBuilder> {
 
   @override
   void replace(BackUp other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BackUp;
   }
 
   @override
-  void update(void Function(BackUpBuilder) updates) {
+  void update(void Function(BackUpBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -146,4 +144,4 @@ class BackUpBuilder implements Builder<BackUp, BackUpBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

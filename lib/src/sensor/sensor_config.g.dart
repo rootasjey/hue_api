@@ -16,32 +16,36 @@ class _$SensorConfigSerializer implements StructuredSerializer<SensorConfig> {
   final String wireName = 'SensorConfig';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, SensorConfig object,
+  Iterable<Object?> serialize(Serializers serializers, SensorConfig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.on != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.on;
+    if (value != null) {
       result
         ..add('on')
-        ..add(serializers.serialize(object.on,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.reachable != null) {
+    value = object.reachable;
+    if (value != null) {
       result
         ..add('reachable')
-        ..add(serializers.serialize(object.reachable,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.battery != null) {
+    value = object.battery;
+    if (value != null) {
       result
         ..add('battery')
-        ..add(serializers.serialize(object.battery,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  SensorConfig deserialize(Serializers serializers, Iterable<Object> serialized,
+  SensorConfig deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SensorConfigBuilder();
 
@@ -49,19 +53,19 @@ class _$SensorConfigSerializer implements StructuredSerializer<SensorConfig> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'on':
           result.on = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'reachable':
           result.reachable = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'battery':
           result.battery = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -72,13 +76,13 @@ class _$SensorConfigSerializer implements StructuredSerializer<SensorConfig> {
 
 class _$SensorConfig extends SensorConfig {
   @override
-  final bool on;
+  final bool? on;
   @override
-  final bool reachable;
+  final bool? reachable;
   @override
-  final int battery;
+  final int? battery;
 
-  factory _$SensorConfig([void Function(SensorConfigBuilder) updates]) =>
+  factory _$SensorConfig([void Function(SensorConfigBuilder)? updates]) =>
       (new SensorConfigBuilder()..update(updates)).build();
 
   _$SensorConfig._({this.on, this.reachable, this.battery}) : super._();
@@ -117,27 +121,28 @@ class _$SensorConfig extends SensorConfig {
 
 class SensorConfigBuilder
     implements Builder<SensorConfig, SensorConfigBuilder> {
-  _$SensorConfig _$v;
+  _$SensorConfig? _$v;
 
-  bool _on;
-  bool get on => _$this._on;
-  set on(bool on) => _$this._on = on;
+  bool? _on;
+  bool? get on => _$this._on;
+  set on(bool? on) => _$this._on = on;
 
-  bool _reachable;
-  bool get reachable => _$this._reachable;
-  set reachable(bool reachable) => _$this._reachable = reachable;
+  bool? _reachable;
+  bool? get reachable => _$this._reachable;
+  set reachable(bool? reachable) => _$this._reachable = reachable;
 
-  int _battery;
-  int get battery => _$this._battery;
-  set battery(int battery) => _$this._battery = battery;
+  int? _battery;
+  int? get battery => _$this._battery;
+  set battery(int? battery) => _$this._battery = battery;
 
   SensorConfigBuilder();
 
   SensorConfigBuilder get _$this {
-    if (_$v != null) {
-      _on = _$v.on;
-      _reachable = _$v.reachable;
-      _battery = _$v.battery;
+    final $v = _$v;
+    if ($v != null) {
+      _on = $v.on;
+      _reachable = $v.reachable;
+      _battery = $v.battery;
       _$v = null;
     }
     return this;
@@ -145,14 +150,12 @@ class SensorConfigBuilder
 
   @override
   void replace(SensorConfig other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SensorConfig;
   }
 
   @override
-  void update(void Function(SensorConfigBuilder) updates) {
+  void update(void Function(SensorConfigBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -165,4 +168,4 @@ class SensorConfigBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

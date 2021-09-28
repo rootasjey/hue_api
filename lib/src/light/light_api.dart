@@ -6,22 +6,22 @@ import 'package:hue_api/src/light/light.dart';
 
 class LightApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   LightApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   Future<List<Light>> all() async {
     String url = '/api/$_username/lights';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return _responseToLights(response);
   }
 
   List<Light> _responseToLights(Map<String, dynamic> response) {
     final lights = <Light>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final light = Light.fromJson(item, id: int.parse(id));
       lights.add(light);
     }
@@ -48,7 +48,7 @@ class LightApi {
 
   Future<List<Light>> searchResults() async {
     String url = '/api/$_username/lights/new';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
 
     final lights = <Light>[];
     for (String id in response.keys) {

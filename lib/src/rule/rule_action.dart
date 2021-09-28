@@ -6,12 +6,9 @@ import 'package:hue_api/src/core/serializers.dart';
 part 'rule_action.g.dart';
 
 abstract class RuleAction implements Built<RuleAction, RuleActionBuilder> {
-  @nullable
-  String get address;
-  @nullable
-  String get method;
-  @nullable
-  BuiltMap<String, String> get body;
+  String? get address;
+  String? get method;
+  BuiltMap<String, String>? get body;
 
   static Serializer<RuleAction> get serializer => _$ruleActionSerializer;
 
@@ -20,6 +17,6 @@ abstract class RuleAction implements Built<RuleAction, RuleActionBuilder> {
   factory RuleAction([updates(RuleActionBuilder b)]) = _$RuleAction;
 
   factory RuleAction.fromJson(Map json) {
-    return serializers.deserializeWith(RuleAction.serializer, json);
+    return serializers.deserializeWith(RuleAction.serializer, json)!;
   }
 }

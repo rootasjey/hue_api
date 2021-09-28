@@ -6,15 +6,15 @@ part 'internet_services.g.dart';
 
 abstract class InternetServices
     implements Built<InternetServices, InternetServicesBuilder> {
-  String get internet;
+  String? get internet;
 
   @BuiltValueField(wireName: 'remoteaccess')
-  String get remoteAccess;
+  String? get remoteAccess;
 
-  String get time;
+  String? get time;
 
   @BuiltValueField(wireName: 'swupdate')
-  String get swUpdate;
+  String? get swUpdate;
 
   static Serializer<InternetServices> get serializer =>
       _$internetServicesSerializer;
@@ -25,6 +25,6 @@ abstract class InternetServices
       _$InternetServices;
 
   factory InternetServices.fromJson(Map json) {
-    return serializers.deserializeWith(InternetServices.serializer, json);
+    return serializers.deserializeWith(InternetServices.serializer, json)!;
   }
 }

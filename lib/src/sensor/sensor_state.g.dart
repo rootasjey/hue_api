@@ -15,44 +15,48 @@ class _$SensorStateSerializer implements StructuredSerializer<SensorState> {
   final String wireName = 'SensorState';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, SensorState object,
+  Iterable<Object?> serialize(Serializers serializers, SensorState object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.presence != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.presence;
+    if (value != null) {
       result
         ..add('presence')
-        ..add(serializers.serialize(object.presence,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.lastUpdated != null) {
+    value = object.lastUpdated;
+    if (value != null) {
       result
         ..add('lastupdated')
-        ..add(serializers.serialize(object.lastUpdated,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.temperature != null) {
+    value = object.temperature;
+    if (value != null) {
       result
         ..add('temperature')
-        ..add(serializers.serialize(object.temperature,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.buttonEvent != null) {
+    value = object.buttonEvent;
+    if (value != null) {
       result
         ..add('buttonevent')
-        ..add(serializers.serialize(object.buttonEvent,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.daylight != null) {
+    value = object.daylight;
+    if (value != null) {
       result
         ..add('daylight')
-        ..add(serializers.serialize(object.daylight,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
 
   @override
-  SensorState deserialize(Serializers serializers, Iterable<Object> serialized,
+  SensorState deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SensorStateBuilder();
 
@@ -60,27 +64,27 @@ class _$SensorStateSerializer implements StructuredSerializer<SensorState> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'presence':
           result.presence = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'lastupdated':
           result.lastUpdated = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'temperature':
           result.temperature = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'buttonevent':
           result.buttonEvent = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'daylight':
           result.daylight = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -91,17 +95,17 @@ class _$SensorStateSerializer implements StructuredSerializer<SensorState> {
 
 class _$SensorState extends SensorState {
   @override
-  final bool presence;
+  final bool? presence;
   @override
-  final String lastUpdated;
+  final String? lastUpdated;
   @override
-  final int temperature;
+  final int? temperature;
   @override
-  final int buttonEvent;
+  final int? buttonEvent;
   @override
-  final bool daylight;
+  final bool? daylight;
 
-  factory _$SensorState([void Function(SensorStateBuilder) updates]) =>
+  factory _$SensorState([void Function(SensorStateBuilder)? updates]) =>
       (new SensorStateBuilder()..update(updates)).build();
 
   _$SensorState._(
@@ -153,37 +157,38 @@ class _$SensorState extends SensorState {
 }
 
 class SensorStateBuilder implements Builder<SensorState, SensorStateBuilder> {
-  _$SensorState _$v;
+  _$SensorState? _$v;
 
-  bool _presence;
-  bool get presence => _$this._presence;
-  set presence(bool presence) => _$this._presence = presence;
+  bool? _presence;
+  bool? get presence => _$this._presence;
+  set presence(bool? presence) => _$this._presence = presence;
 
-  String _lastUpdated;
-  String get lastUpdated => _$this._lastUpdated;
-  set lastUpdated(String lastUpdated) => _$this._lastUpdated = lastUpdated;
+  String? _lastUpdated;
+  String? get lastUpdated => _$this._lastUpdated;
+  set lastUpdated(String? lastUpdated) => _$this._lastUpdated = lastUpdated;
 
-  int _temperature;
-  int get temperature => _$this._temperature;
-  set temperature(int temperature) => _$this._temperature = temperature;
+  int? _temperature;
+  int? get temperature => _$this._temperature;
+  set temperature(int? temperature) => _$this._temperature = temperature;
 
-  int _buttonEvent;
-  int get buttonEvent => _$this._buttonEvent;
-  set buttonEvent(int buttonEvent) => _$this._buttonEvent = buttonEvent;
+  int? _buttonEvent;
+  int? get buttonEvent => _$this._buttonEvent;
+  set buttonEvent(int? buttonEvent) => _$this._buttonEvent = buttonEvent;
 
-  bool _daylight;
-  bool get daylight => _$this._daylight;
-  set daylight(bool daylight) => _$this._daylight = daylight;
+  bool? _daylight;
+  bool? get daylight => _$this._daylight;
+  set daylight(bool? daylight) => _$this._daylight = daylight;
 
   SensorStateBuilder();
 
   SensorStateBuilder get _$this {
-    if (_$v != null) {
-      _presence = _$v.presence;
-      _lastUpdated = _$v.lastUpdated;
-      _temperature = _$v.temperature;
-      _buttonEvent = _$v.buttonEvent;
-      _daylight = _$v.daylight;
+    final $v = _$v;
+    if ($v != null) {
+      _presence = $v.presence;
+      _lastUpdated = $v.lastUpdated;
+      _temperature = $v.temperature;
+      _buttonEvent = $v.buttonEvent;
+      _daylight = $v.daylight;
       _$v = null;
     }
     return this;
@@ -191,14 +196,12 @@ class SensorStateBuilder implements Builder<SensorState, SensorStateBuilder> {
 
   @override
   void replace(SensorState other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SensorState;
   }
 
   @override
-  void update(void Function(SensorStateBuilder) updates) {
+  void update(void Function(SensorStateBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -216,4 +219,4 @@ class SensorStateBuilder implements Builder<SensorState, SensorStateBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

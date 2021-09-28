@@ -6,22 +6,22 @@ import 'package:hue_api/src/sensor/sensor.dart';
 
 class SensorApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   SensorApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   Future<List<Sensor>> all() async {
     String url = '/api/$_username/sensors';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return _responseToSensors(response);
   }
 
   List<Sensor> _responseToSensors(Map<String, dynamic> response) {
     final sensors = <Sensor>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final sensor = Sensor.fromJson(item, id: int.parse(id));
       sensors.add(sensor);
     }
@@ -49,7 +49,7 @@ class SensorApi {
 
   Future<List<Sensor>> searchResults() async {
     String url = '/api/$_username/sensors/new';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     final sensors = <Sensor>[];
     for (String id in response.keys) {
       if ('lastscan' != id) {

@@ -7,14 +7,14 @@ part 'software_update_bridge.g.dart';
 
 abstract class SoftwareUpdateBridge
     implements Built<SoftwareUpdateBridge, SoftwareUpdateBridgeBuilder> {
-  String get state;
+  String? get state;
 
   @BuiltValueField(wireName: 'lastinstall')
-  String get lastInstall;
+  String? get lastInstall;
 
   @memoized
   DateTime get lastInstallDate =>
-      DateFormat("yyyy-MM-dd'T'HH:m:s").parse(lastInstall);
+      DateFormat("yyyy-MM-dd'T'HH:m:s").parse(lastInstall!);
 
   static Serializer<SoftwareUpdateBridge> get serializer =>
       _$softwareUpdateBridgeSerializer;
@@ -25,6 +25,6 @@ abstract class SoftwareUpdateBridge
       _$SoftwareUpdateBridge;
 
   factory SoftwareUpdateBridge.fromJson(Map json) {
-    return serializers.deserializeWith(SoftwareUpdateBridge.serializer, json);
+    return serializers.deserializeWith(SoftwareUpdateBridge.serializer, json)!;
   }
 }

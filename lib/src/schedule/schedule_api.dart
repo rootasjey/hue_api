@@ -6,22 +6,22 @@ import 'package:hue_api/src/schedule/schedule.dart';
 
 class ScheduleApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   ScheduleApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   Future<List<Schedule>> all() async {
     String url = '/api/$_username/schedules';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return _responseToSchedules(response);
   }
 
   List<Schedule> _responseToSchedules(Map<String, dynamic> response) {
     final schedules = <Schedule>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final schedule = Schedule.fromJson(item, id: id);
       schedules.add(schedule);
     }

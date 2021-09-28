@@ -17,7 +17,7 @@ class BridgeDiscovery {
       final response = await _client.get(Uri.parse(url));
       List responseMap = json.decode(response.body);
       final result = <DiscoveryResult>[];
-      for (Map<String, dynamic> json in responseMap) {
+      for (Map<String, dynamic> json in responseMap as Iterable<Map<String, dynamic>>) {
         result.add(DiscoveryResult.fromJson(json));
       }
       return result;
@@ -31,7 +31,7 @@ class BridgeDiscovery {
     final url = 'http://$ipAddress/api/hue/config';
     try {
       final response = await _client.get(Uri.parse(url));
-      Map responseMap = json.decode(response.body);
+      Map? responseMap = json.decode(response.body);
       final result = DiscoveryResult.fromJson(responseMap)
           .rebuild((b) => b..ipAddress = ipAddress);
       return result;

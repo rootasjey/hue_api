@@ -15,98 +15,111 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
   final String wireName = 'Sensor';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Sensor object,
+  Iterable<Object?> serialize(Serializers serializers, Sensor object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.type != null) {
+    value = object.type;
+    if (value != null) {
       result
         ..add('type')
-        ..add(serializers.serialize(object.type,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.modelId != null) {
+    value = object.modelId;
+    if (value != null) {
       result
         ..add('modelid')
-        ..add(serializers.serialize(object.modelId,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.uniqueId != null) {
+    value = object.uniqueId;
+    if (value != null) {
       result
         ..add('uniqueid')
-        ..add(serializers.serialize(object.uniqueId,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.manufacturerName != null) {
+    value = object.manufacturerName;
+    if (value != null) {
       result
         ..add('manufacturername')
-        ..add(serializers.serialize(object.manufacturerName,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.swVersion != null) {
+    value = object.swVersion;
+    if (value != null) {
       result
         ..add('swversion')
-        ..add(serializers.serialize(object.swVersion,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.recycle != null) {
+    value = object.recycle;
+    if (value != null) {
       result
         ..add('recycle')
-        ..add(serializers.serialize(object.recycle,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.reachable != null) {
+    value = object.reachable;
+    if (value != null) {
       result
         ..add('reachable')
-        ..add(serializers.serialize(object.reachable,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.on != null) {
+    value = object.on;
+    if (value != null) {
       result
         ..add('on')
-        ..add(serializers.serialize(object.on,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.battery != null) {
+    value = object.battery;
+    if (value != null) {
       result
         ..add('battery')
-        ..add(serializers.serialize(object.battery,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.state != null) {
+    value = object.state;
+    if (value != null) {
       result
         ..add('state')
-        ..add(serializers.serialize(object.state,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(SensorState)));
     }
-    if (object.config != null) {
+    value = object.config;
+    if (value != null) {
       result
         ..add('config')
-        ..add(serializers.serialize(object.config,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(SensorConfig)));
     }
-    if (object.capabilities != null) {
+    value = object.capabilities;
+    if (value != null) {
       result
         ..add('capabilities')
-        ..add(serializers.serialize(object.capabilities,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(SensorCapabilities)));
     }
     return result;
   }
 
   @override
-  Sensor deserialize(Serializers serializers, Iterable<Object> serialized,
+  Sensor deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SensorBuilder();
 
@@ -114,63 +127,63 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'modelid':
           result.modelId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'uniqueid':
           result.uniqueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'manufacturername':
           result.manufacturerName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'swversion':
           result.swVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'recycle':
           result.recycle = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'reachable':
           result.reachable = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'on':
           result.on = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'battery':
           result.battery = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'state':
           result.state.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SensorState)) as SensorState);
+              specifiedType: const FullType(SensorState))! as SensorState);
           break;
         case 'config':
           result.config.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SensorConfig)) as SensorConfig);
+              specifiedType: const FullType(SensorConfig))! as SensorConfig);
           break;
         case 'capabilities':
           result.capabilities.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(SensorCapabilities))
+                  specifiedType: const FullType(SensorCapabilities))!
               as SensorCapabilities);
           break;
       }
@@ -182,35 +195,35 @@ class _$SensorSerializer implements StructuredSerializer<Sensor> {
 
 class _$Sensor extends Sensor {
   @override
-  final int id;
+  final int? id;
   @override
-  final String type;
+  final String? type;
   @override
-  final String name;
+  final String? name;
   @override
-  final String modelId;
+  final String? modelId;
   @override
-  final String uniqueId;
+  final String? uniqueId;
   @override
-  final String manufacturerName;
+  final String? manufacturerName;
   @override
-  final String swVersion;
+  final String? swVersion;
   @override
-  final bool recycle;
+  final bool? recycle;
   @override
-  final bool reachable;
+  final bool? reachable;
   @override
-  final bool on;
+  final bool? on;
   @override
-  final int battery;
+  final int? battery;
   @override
-  final SensorState state;
+  final SensorState? state;
   @override
-  final SensorConfig config;
+  final SensorConfig? config;
   @override
-  final SensorCapabilities capabilities;
+  final SensorCapabilities? capabilities;
 
-  factory _$Sensor([void Function(SensorBuilder) updates]) =>
+  factory _$Sensor([void Function(SensorBuilder)? updates]) =>
       (new SensorBuilder()..update(updates)).build();
 
   _$Sensor._(
@@ -309,86 +322,87 @@ class _$Sensor extends Sensor {
 }
 
 class SensorBuilder implements Builder<Sensor, SensorBuilder> {
-  _$Sensor _$v;
+  _$Sensor? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _modelId;
-  String get modelId => _$this._modelId;
-  set modelId(String modelId) => _$this._modelId = modelId;
+  String? _modelId;
+  String? get modelId => _$this._modelId;
+  set modelId(String? modelId) => _$this._modelId = modelId;
 
-  String _uniqueId;
-  String get uniqueId => _$this._uniqueId;
-  set uniqueId(String uniqueId) => _$this._uniqueId = uniqueId;
+  String? _uniqueId;
+  String? get uniqueId => _$this._uniqueId;
+  set uniqueId(String? uniqueId) => _$this._uniqueId = uniqueId;
 
-  String _manufacturerName;
-  String get manufacturerName => _$this._manufacturerName;
-  set manufacturerName(String manufacturerName) =>
+  String? _manufacturerName;
+  String? get manufacturerName => _$this._manufacturerName;
+  set manufacturerName(String? manufacturerName) =>
       _$this._manufacturerName = manufacturerName;
 
-  String _swVersion;
-  String get swVersion => _$this._swVersion;
-  set swVersion(String swVersion) => _$this._swVersion = swVersion;
+  String? _swVersion;
+  String? get swVersion => _$this._swVersion;
+  set swVersion(String? swVersion) => _$this._swVersion = swVersion;
 
-  bool _recycle;
-  bool get recycle => _$this._recycle;
-  set recycle(bool recycle) => _$this._recycle = recycle;
+  bool? _recycle;
+  bool? get recycle => _$this._recycle;
+  set recycle(bool? recycle) => _$this._recycle = recycle;
 
-  bool _reachable;
-  bool get reachable => _$this._reachable;
-  set reachable(bool reachable) => _$this._reachable = reachable;
+  bool? _reachable;
+  bool? get reachable => _$this._reachable;
+  set reachable(bool? reachable) => _$this._reachable = reachable;
 
-  bool _on;
-  bool get on => _$this._on;
-  set on(bool on) => _$this._on = on;
+  bool? _on;
+  bool? get on => _$this._on;
+  set on(bool? on) => _$this._on = on;
 
-  int _battery;
-  int get battery => _$this._battery;
-  set battery(int battery) => _$this._battery = battery;
+  int? _battery;
+  int? get battery => _$this._battery;
+  set battery(int? battery) => _$this._battery = battery;
 
-  SensorStateBuilder _state;
+  SensorStateBuilder? _state;
   SensorStateBuilder get state => _$this._state ??= new SensorStateBuilder();
-  set state(SensorStateBuilder state) => _$this._state = state;
+  set state(SensorStateBuilder? state) => _$this._state = state;
 
-  SensorConfigBuilder _config;
+  SensorConfigBuilder? _config;
   SensorConfigBuilder get config =>
       _$this._config ??= new SensorConfigBuilder();
-  set config(SensorConfigBuilder config) => _$this._config = config;
+  set config(SensorConfigBuilder? config) => _$this._config = config;
 
-  SensorCapabilitiesBuilder _capabilities;
+  SensorCapabilitiesBuilder? _capabilities;
   SensorCapabilitiesBuilder get capabilities =>
       _$this._capabilities ??= new SensorCapabilitiesBuilder();
-  set capabilities(SensorCapabilitiesBuilder capabilities) =>
+  set capabilities(SensorCapabilitiesBuilder? capabilities) =>
       _$this._capabilities = capabilities;
 
   SensorBuilder();
 
   SensorBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _type = _$v.type;
-      _name = _$v.name;
-      _modelId = _$v.modelId;
-      _uniqueId = _$v.uniqueId;
-      _manufacturerName = _$v.manufacturerName;
-      _swVersion = _$v.swVersion;
-      _recycle = _$v.recycle;
-      _reachable = _$v.reachable;
-      _on = _$v.on;
-      _battery = _$v.battery;
-      _state = _$v.state?.toBuilder();
-      _config = _$v.config?.toBuilder();
-      _capabilities = _$v.capabilities?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _type = $v.type;
+      _name = $v.name;
+      _modelId = $v.modelId;
+      _uniqueId = $v.uniqueId;
+      _manufacturerName = $v.manufacturerName;
+      _swVersion = $v.swVersion;
+      _recycle = $v.recycle;
+      _reachable = $v.reachable;
+      _on = $v.on;
+      _battery = $v.battery;
+      _state = $v.state?.toBuilder();
+      _config = $v.config?.toBuilder();
+      _capabilities = $v.capabilities?.toBuilder();
       _$v = null;
     }
     return this;
@@ -396,14 +410,12 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
 
   @override
   void replace(Sensor other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Sensor;
   }
 
   @override
-  void update(void Function(SensorBuilder) updates) {
+  void update(void Function(SensorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -428,7 +440,7 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
               config: _config?.build(),
               capabilities: _capabilities?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'state';
         _state?.build();
@@ -447,4 +459,4 @@ class SensorBuilder implements Builder<Sensor, SensorBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

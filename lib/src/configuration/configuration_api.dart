@@ -29,13 +29,13 @@ class ConfigurationApi {
   }
 
   Future<BridgeResponse> deleteUser(
-      String username, String deletingUsername) async {
+      String? username, String deletingUsername) async {
     String url = '/api/$username/config/whitelist/$deletingUsername';
     return await _client.delete(url);
   }
 
   /// Returns list of all configuration elements in the bridge. Note all times are stored in UTC.
-  Future<Configuration> configuration(String username) async {
+  Future<Configuration> configuration(String? username) async {
     String url = '/api/$username/config';
     final response = await _client.get(url);
     return Configuration.fromJson(response);
@@ -44,7 +44,7 @@ class ConfigurationApi {
   /// This command is used to fetch the entire datastore from the device, including settings and state information for lights, groups, schedules and configuration.
   ///
   /// It should only be used sparingly as it is resource intensive for the bridge, but is supplied e.g. for synchronization purposes.
-  Future<Configuration> completeConfiguration(String username) async {
+  Future<Configuration> completeConfiguration(String? username) async {
     String url = '/api/$username';
     final response = await _client.get(url);
     return Configuration.fromJson(response);
@@ -52,7 +52,7 @@ class ConfigurationApi {
 
   /// Allows the user to set some configuration values.
   Future<BridgeResponse> update(
-      String username, Configuration configuration) async {
+      String? username, Configuration configuration) async {
     String url = '/api/$username/config';
     return await _client.put(url, configuration.toBridgeObject());
   }

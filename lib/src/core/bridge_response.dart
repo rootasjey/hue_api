@@ -3,9 +3,9 @@ class BridgeResponse {
   List<dynamic> success = [];
   List<dynamic> errors = [];
 
-  BridgeResponse(dynamic response, [String key]) {
+  BridgeResponse(dynamic response, [String? key]) {
     if (response is List) {
-      for (Map<String, dynamic> resultMap in response) {
+      for (Map<String, dynamic> resultMap in response as Iterable<Map<String, dynamic>>) {
         if (resultMap.containsKey('success')) {
           success.add(resultMap['success']);
         } else if (resultMap.containsKey('error')) {

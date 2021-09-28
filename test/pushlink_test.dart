@@ -9,9 +9,9 @@ import 'package:test/test.dart';
 import 'mock.dart';
 
 void main() {
-  PushlinkBloc sut;
-  MockPushlinkStorage storage;
-  MockBridgeDiscovery bridgeDiscovery;
+  late PushlinkBloc sut;
+  late MockPushlinkStorage storage;
+  late MockBridgeDiscovery bridgeDiscovery;
 
   setUp(() {
     storage = MockPushlinkStorage();
@@ -41,7 +41,7 @@ void main() {
 
   mockManualBridgeResult() {
     final result = DiscoveryResult();
-    when(bridgeDiscovery.manual(any)).thenAnswer((_) {
+    when(bridgeDiscovery.manual('')).thenAnswer((_) {
       return Future.value(result);
     });
     return result;

@@ -6,22 +6,22 @@ import 'package:hue_api/src/resource_link/resource_link.dart';
 
 class ResourceLinkApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   ResourceLinkApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   Future<List<ResourceLink>> all() async {
     String url = '/api/$_username/resourcelinks';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return _responseToResourceLinks(response);
   }
 
   List<ResourceLink> _responseToResourceLinks(Map<String, dynamic> response) {
     final resourceLinks = <ResourceLink>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final resourceLink = ResourceLink.fromJson(item, id: id);
       resourceLinks.add(resourceLink);
     }

@@ -6,22 +6,22 @@ import 'package:hue_api/src/rule/rule.dart';
 
 class RuleApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   RuleApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
 
   Future<List<Rule>> all() async {
     String url = '/api/$_username/rules';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return _responseToRules(response);
   }
 
   List<Rule> _responseToRules(Map<String, dynamic> response) {
     final rules = <Rule>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final rule = Rule.fromJson(item, id: int.parse(id));
       rules.add(rule);
     }

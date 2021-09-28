@@ -15,21 +15,29 @@ class _$AutoInstallSerializer implements StructuredSerializer<AutoInstall> {
   final String wireName = 'AutoInstall';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AutoInstall object,
+  Iterable<Object?> serialize(Serializers serializers, AutoInstall object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'on',
-      serializers.serialize(object.on, specifiedType: const FullType(bool)),
-      'updatetime',
-      serializers.serialize(object.updateTime,
-          specifiedType: const FullType(String)),
-    ];
-
+    final result = <Object?>[];
+    Object? value;
+    value = object.on;
+    if (value != null) {
+      result
+        ..add('on')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.updateTime;
+    if (value != null) {
+      result
+        ..add('updatetime')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
   @override
-  AutoInstall deserialize(Serializers serializers, Iterable<Object> serialized,
+  AutoInstall deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AutoInstallBuilder();
 
@@ -37,15 +45,15 @@ class _$AutoInstallSerializer implements StructuredSerializer<AutoInstall> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'on':
           result.on = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'updatetime':
           result.updateTime = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -56,22 +64,15 @@ class _$AutoInstallSerializer implements StructuredSerializer<AutoInstall> {
 
 class _$AutoInstall extends AutoInstall {
   @override
-  final bool on;
+  final bool? on;
   @override
-  final String updateTime;
-  DateTime __updateDate;
+  final String? updateTime;
+  DateTime? __updateDate;
 
-  factory _$AutoInstall([void Function(AutoInstallBuilder) updates]) =>
+  factory _$AutoInstall([void Function(AutoInstallBuilder)? updates]) =>
       (new AutoInstallBuilder()..update(updates)).build();
 
-  _$AutoInstall._({this.on, this.updateTime}) : super._() {
-    if (on == null) {
-      throw new BuiltValueNullFieldError('AutoInstall', 'on');
-    }
-    if (updateTime == null) {
-      throw new BuiltValueNullFieldError('AutoInstall', 'updateTime');
-    }
-  }
+  _$AutoInstall._({this.on, this.updateTime}) : super._();
 
   @override
   DateTime get updateDate => __updateDate ??= super.updateDate;
@@ -106,22 +107,23 @@ class _$AutoInstall extends AutoInstall {
 }
 
 class AutoInstallBuilder implements Builder<AutoInstall, AutoInstallBuilder> {
-  _$AutoInstall _$v;
+  _$AutoInstall? _$v;
 
-  bool _on;
-  bool get on => _$this._on;
-  set on(bool on) => _$this._on = on;
+  bool? _on;
+  bool? get on => _$this._on;
+  set on(bool? on) => _$this._on = on;
 
-  String _updateTime;
-  String get updateTime => _$this._updateTime;
-  set updateTime(String updateTime) => _$this._updateTime = updateTime;
+  String? _updateTime;
+  String? get updateTime => _$this._updateTime;
+  set updateTime(String? updateTime) => _$this._updateTime = updateTime;
 
   AutoInstallBuilder();
 
   AutoInstallBuilder get _$this {
-    if (_$v != null) {
-      _on = _$v.on;
-      _updateTime = _$v.updateTime;
+    final $v = _$v;
+    if ($v != null) {
+      _on = $v.on;
+      _updateTime = $v.updateTime;
       _$v = null;
     }
     return this;
@@ -129,14 +131,12 @@ class AutoInstallBuilder implements Builder<AutoInstall, AutoInstallBuilder> {
 
   @override
   void replace(AutoInstall other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AutoInstall;
   }
 
   @override
-  void update(void Function(AutoInstallBuilder) updates) {
+  void update(void Function(AutoInstallBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -148,4 +148,4 @@ class AutoInstallBuilder implements Builder<AutoInstall, AutoInstallBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

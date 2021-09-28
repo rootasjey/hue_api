@@ -15,76 +15,85 @@ class _$RuleSerializer implements StructuredSerializer<Rule> {
   final String wireName = 'Rule';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Rule object,
+  Iterable<Object?> serialize(Serializers serializers, Rule object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.lastTriggered != null) {
+    value = object.lastTriggered;
+    if (value != null) {
       result
         ..add('lasttriggered')
-        ..add(serializers.serialize(object.lastTriggered,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.creationTime != null) {
+    value = object.creationTime;
+    if (value != null) {
       result
         ..add('creationtime')
-        ..add(serializers.serialize(object.creationTime,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.timesTriggered != null) {
+    value = object.timesTriggered;
+    if (value != null) {
       result
         ..add('timestriggered')
-        ..add(serializers.serialize(object.timesTriggered,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.owner != null) {
+    value = object.owner;
+    if (value != null) {
       result
         ..add('owner')
-        ..add(serializers.serialize(object.owner,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.status != null) {
+    value = object.status;
+    if (value != null) {
       result
         ..add('status')
-        ..add(serializers.serialize(object.status,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.conditions != null) {
+    value = object.conditions;
+    if (value != null) {
       result
         ..add('conditions')
-        ..add(serializers.serialize(object.conditions,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(Condition)])));
     }
-    if (object.actions != null) {
+    value = object.actions;
+    if (value != null) {
       result
         ..add('actions')
-        ..add(serializers.serialize(object.actions,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(RuleAction)])));
     }
-    if (object.recycle != null) {
+    value = object.recycle;
+    if (value != null) {
       result
         ..add('recycle')
-        ..add(serializers.serialize(object.recycle,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
 
   @override
-  Rule deserialize(Serializers serializers, Iterable<Object> serialized,
+  Rule deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RuleBuilder();
 
@@ -92,51 +101,51 @@ class _$RuleSerializer implements StructuredSerializer<Rule> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lasttriggered':
           result.lastTriggered = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'creationtime':
           result.creationTime = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'timestriggered':
           result.timesTriggered = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'owner':
           result.owner = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'status':
           result.status = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'conditions':
           result.conditions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Condition)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Condition)]))!
+              as BuiltList<Object?>);
           break;
         case 'actions':
           result.actions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(RuleAction)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(RuleAction)]))!
+              as BuiltList<Object?>);
           break;
         case 'recycle':
           result.recycle = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -147,27 +156,27 @@ class _$RuleSerializer implements StructuredSerializer<Rule> {
 
 class _$Rule extends Rule {
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String lastTriggered;
+  final String? lastTriggered;
   @override
-  final String creationTime;
+  final String? creationTime;
   @override
-  final int timesTriggered;
+  final int? timesTriggered;
   @override
-  final String owner;
+  final String? owner;
   @override
-  final String status;
+  final String? status;
   @override
-  final BuiltList<Condition> conditions;
+  final BuiltList<Condition>? conditions;
   @override
-  final BuiltList<RuleAction> actions;
+  final BuiltList<RuleAction>? actions;
   @override
-  final bool recycle;
+  final bool? recycle;
 
-  factory _$Rule([void Function(RuleBuilder) updates]) =>
+  factory _$Rule([void Function(RuleBuilder)? updates]) =>
       (new RuleBuilder()..update(updates)).build();
 
   _$Rule._(
@@ -244,67 +253,68 @@ class _$Rule extends Rule {
 }
 
 class RuleBuilder implements Builder<Rule, RuleBuilder> {
-  _$Rule _$v;
+  _$Rule? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _lastTriggered;
-  String get lastTriggered => _$this._lastTriggered;
-  set lastTriggered(String lastTriggered) =>
+  String? _lastTriggered;
+  String? get lastTriggered => _$this._lastTriggered;
+  set lastTriggered(String? lastTriggered) =>
       _$this._lastTriggered = lastTriggered;
 
-  String _creationTime;
-  String get creationTime => _$this._creationTime;
-  set creationTime(String creationTime) => _$this._creationTime = creationTime;
+  String? _creationTime;
+  String? get creationTime => _$this._creationTime;
+  set creationTime(String? creationTime) => _$this._creationTime = creationTime;
 
-  int _timesTriggered;
-  int get timesTriggered => _$this._timesTriggered;
-  set timesTriggered(int timesTriggered) =>
+  int? _timesTriggered;
+  int? get timesTriggered => _$this._timesTriggered;
+  set timesTriggered(int? timesTriggered) =>
       _$this._timesTriggered = timesTriggered;
 
-  String _owner;
-  String get owner => _$this._owner;
-  set owner(String owner) => _$this._owner = owner;
+  String? _owner;
+  String? get owner => _$this._owner;
+  set owner(String? owner) => _$this._owner = owner;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  ListBuilder<Condition> _conditions;
+  ListBuilder<Condition>? _conditions;
   ListBuilder<Condition> get conditions =>
       _$this._conditions ??= new ListBuilder<Condition>();
-  set conditions(ListBuilder<Condition> conditions) =>
+  set conditions(ListBuilder<Condition>? conditions) =>
       _$this._conditions = conditions;
 
-  ListBuilder<RuleAction> _actions;
+  ListBuilder<RuleAction>? _actions;
   ListBuilder<RuleAction> get actions =>
       _$this._actions ??= new ListBuilder<RuleAction>();
-  set actions(ListBuilder<RuleAction> actions) => _$this._actions = actions;
+  set actions(ListBuilder<RuleAction>? actions) => _$this._actions = actions;
 
-  bool _recycle;
-  bool get recycle => _$this._recycle;
-  set recycle(bool recycle) => _$this._recycle = recycle;
+  bool? _recycle;
+  bool? get recycle => _$this._recycle;
+  set recycle(bool? recycle) => _$this._recycle = recycle;
 
   RuleBuilder();
 
   RuleBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
-      _lastTriggered = _$v.lastTriggered;
-      _creationTime = _$v.creationTime;
-      _timesTriggered = _$v.timesTriggered;
-      _owner = _$v.owner;
-      _status = _$v.status;
-      _conditions = _$v.conditions?.toBuilder();
-      _actions = _$v.actions?.toBuilder();
-      _recycle = _$v.recycle;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
+      _lastTriggered = $v.lastTriggered;
+      _creationTime = $v.creationTime;
+      _timesTriggered = $v.timesTriggered;
+      _owner = $v.owner;
+      _status = $v.status;
+      _conditions = $v.conditions?.toBuilder();
+      _actions = $v.actions?.toBuilder();
+      _recycle = $v.recycle;
       _$v = null;
     }
     return this;
@@ -312,14 +322,12 @@ class RuleBuilder implements Builder<Rule, RuleBuilder> {
 
   @override
   void replace(Rule other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Rule;
   }
 
   @override
-  void update(void Function(RuleBuilder) updates) {
+  void update(void Function(RuleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -340,7 +348,7 @@ class RuleBuilder implements Builder<Rule, RuleBuilder> {
               actions: _actions?.build(),
               recycle: recycle);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'conditions';
         _conditions?.build();
@@ -357,4 +365,4 @@ class RuleBuilder implements Builder<Rule, RuleBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

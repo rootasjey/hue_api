@@ -7,23 +7,23 @@ import 'package:hue_api/src/scene/scene.dart';
 
 class SceneApi {
   BridgeClient _client;
-  String _username;
+  String? _username;
 
   SceneApi(this._client, [this._username]);
 
-  set username(String username) => this._username = username;
+  set username(String? username) => this._username = username;
   set address(String address) => this.address = address;
 
   Future<List<Scene>> all() async {
     String url = '/api/$_username/scenes';
-    final response = await _client.get(url);
+    final response = await (_client.get(url) as FutureOr<Map<String, dynamic>>);
     return await _responseToScenes(response);
   }
 
   Future<List<Scene>> _responseToScenes(Map<String, dynamic> response) async {
     final scenes = <Scene>[];
     for (String id in response.keys) {
-      Map<String, dynamic> item = response[id];
+      Map<String, dynamic>? item = response[id];
       final scene = Scene.fromJson(item, id: id);
       final lights = await _lights(scene);
       scene.rebuild((b) => b..sceneLights.replace(lights));
@@ -34,7 +34,7 @@ class SceneApi {
 
   Future<List<Light>> _lights(Scene scene) async {
     final result = <Light>[];
-    for (String _id in scene.lightIds) {
+    for (String _id in scene.lightIds!) {
       result.add(await _completeLight(int.parse(_id)));
     }
     return result;

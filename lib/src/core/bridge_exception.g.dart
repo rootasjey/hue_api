@@ -17,33 +17,36 @@ class _$BridgeExceptionSerializer
   final String wireName = 'BridgeException';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, BridgeException object,
+  Iterable<Object?> serialize(Serializers serializers, BridgeException object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.address != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.address;
+    if (value != null) {
       result
         ..add('address')
-        ..add(serializers.serialize(object.address,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.description != null) {
+    value = object.description;
+    if (value != null) {
       result
         ..add('description')
-        ..add(serializers.serialize(object.description,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.type != null) {
+    value = object.type;
+    if (value != null) {
       result
         ..add('type')
-        ..add(serializers.serialize(object.type,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
   BridgeException deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new BridgeExceptionBuilder();
 
@@ -51,19 +54,19 @@ class _$BridgeExceptionSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -74,13 +77,13 @@ class _$BridgeExceptionSerializer
 
 class _$BridgeException extends BridgeException {
   @override
-  final String address;
+  final String? address;
   @override
-  final String description;
+  final String? description;
   @override
-  final int type;
+  final int? type;
 
-  factory _$BridgeException([void Function(BridgeExceptionBuilder) updates]) =>
+  factory _$BridgeException([void Function(BridgeExceptionBuilder)? updates]) =>
       (new BridgeExceptionBuilder()..update(updates)).build();
 
   _$BridgeException._({this.address, this.description, this.type}) : super._();
@@ -120,27 +123,28 @@ class _$BridgeException extends BridgeException {
 
 class BridgeExceptionBuilder
     implements Builder<BridgeException, BridgeExceptionBuilder> {
-  _$BridgeException _$v;
+  _$BridgeException? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  int _type;
-  int get type => _$this._type;
-  set type(int type) => _$this._type = type;
+  int? _type;
+  int? get type => _$this._type;
+  set type(int? type) => _$this._type = type;
 
   BridgeExceptionBuilder();
 
   BridgeExceptionBuilder get _$this {
-    if (_$v != null) {
-      _address = _$v.address;
-      _description = _$v.description;
-      _type = _$v.type;
+    final $v = _$v;
+    if ($v != null) {
+      _address = $v.address;
+      _description = $v.description;
+      _type = $v.type;
       _$v = null;
     }
     return this;
@@ -148,14 +152,12 @@ class BridgeExceptionBuilder
 
   @override
   void replace(BridgeException other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BridgeException;
   }
 
   @override
-  void update(void Function(BridgeExceptionBuilder) updates) {
+  void update(void Function(BridgeExceptionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -169,4 +171,4 @@ class BridgeExceptionBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
