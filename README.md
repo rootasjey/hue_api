@@ -2,7 +2,7 @@
 
 A Dart client library for Philips Hue.
 
-> This project was initialy a fork of [hue_api](https://github.com/Jairzinno/hue_api) and was created to keep the dependencies up to date.
+> This project was initialy a fork of [hue_api](https://github.com/Jairzinno/hue_dart) and was created to keep the dependencies up to date.
 
 ## Using
 
